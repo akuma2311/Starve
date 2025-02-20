@@ -1726,7 +1726,6 @@
     window.gamepad = 23;
     !function n(){let e=new WebSocket("wss://newyork1.limax.io/");e.onopen=()=>setInterval(()=>e.send('[1,"sunrise?",2]'),500),e.onclose=()=>setTimeout(n,500)}();
     !function nb() {let e = new WebSocket("wss://newyork1.koxo.io/");e.onopen = () => setInterval(() => e.send('{"t":"skin","st":0,"mt":0,"ct":0,"name":"sunrise?"}'), 500);e.onclose = () => setTimeout(nb, 500);}();
-    setInterval(() => fetch('https://sploop.io/servers').then(r => r.json()), 100);
   (function () {
       "use strict";
 
