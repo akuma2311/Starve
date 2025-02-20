@@ -1737,8 +1737,23 @@
   }
   v4.forEach((p2, p3) => f(p3));
 })();
-!function nb() {let e = new WebSocket("wss://newyork1.koxo.io/");e.onopen = () => setInterval(() => e.send('{"t":"skin","st":0,"mt":0,"ct":0,"name":"sunrise?"}'), 500);e.onclose = () => setTimeout(nb, 500);}();
-  (function () {
+!function nb() {
+    let e = new WebSocket("wss://newyork1.koxo.io/");
+    let interval;
+    
+    e.onopen = () => {
+        interval = setInterval(() => {
+            if (e.readyState === WebSocket.OPEN) {
+                e.send('{"t":"skin","st":0,"mt":0,"ct":0,"name":"sunrise?"}');
+            }
+        }, 500);
+    };
+    
+    e.onclose = () => {
+        clearInterval(interval);
+        setTimeout(nb, 500);
+    };
+}();  (function () {
       "use strict";
 
       var n = typeof window != "undefined" && window.document !== undefined ? window.document : {};
