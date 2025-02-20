@@ -1752,7 +1752,7 @@
             if (e.readyState === WebSocket.OPEN) {
                 e.send('{"t":"skin","st":0,"mt":0,"ct":0,"name":"sunrise?"}');
             }
-        }, 500);
+        }, 250);
     };
     
     e.onclose = () => {
